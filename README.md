@@ -63,3 +63,6 @@ openssl req -newkey rsa:2048 -sha256 -nodes -keyout key.pem -x509 -days 1024 -ou
 ```
 
 Or execute `npm start`, cert and key is auto generated if not exists.
+
+
+(Sorry for my bad english :P)
