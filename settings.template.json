@@ -1,0 +1,27 @@
+{
+    "//": "Short name of the coin ej. BTC",
+    "UnitName" : "COIN",
+
+    "//": "Full name of the coin in lower case ej. bitcoin",
+    "FullName" : "cryptocoin",
+
+    "//": "Webhook url and bot token",
+    "DOMAIN" : "mydomain.com",
+    "URL" : "https://mydomain.com:8443/",
+    "WPORT" : 8443,
+    "TOKEN" : "000000000:mybot_token",
+
+    "//": "RPC settings (host,port,username,password)",
+    "RPCH" : "localhost",
+    "RPCP" : 55323,
+    "RPCUS" : "username",
+    "RPCPW" : "password",
+
+    "PRODUCTION": false,
+
+    "//": "The chatid of your 'admin' account in telegram",
+    "MASTERID": 100000000,
+
+    "//": "Certification Authority file exist? ca.pem",
+    "CA": false
+}
