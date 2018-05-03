@@ -1,4 +1,6 @@
 var fs = require('fs');
+
+//if your machine no have problems with openssl, set this variable to false
 var isWin = process.platform === "win32";
 
 if(!fs.existsSync("settings.json")){
