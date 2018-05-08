@@ -3,11 +3,11 @@
 */
 
 // block reward
-var rew = 25;
+var rew = 32;
 // reward halv every n blocks
-const blockhalv = 840000;
+const blockhalv = 1050001;
 // block time
-const blocktime= 1*60;
+const blocktime= 50;
 
 
 function secondsToString(seconds)

@@ -163,7 +163,17 @@ try{
     break;
     case "/newaddress":
     var address="";
-    rpcCoin.call('getnewaddress', [], function (err, res) {
+    var type="legacy";
+    if(arr.length>1) {
+      if(arr[1]!="legacy"||arr[1]!="bech32"){
+        if(arr[1]=="segwit"){
+          type="p2sh-segwit";
+        }else{
+          type=arr[1];
+        }
+      }
+    }
+    rpcCoin.call('getnewaddress', [`${chatId}`,`${type}`], function (err, res) {
       if (err) {
         let errMsg = "Error when calling: " + err;
         debugL(errMsg);

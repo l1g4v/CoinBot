@@ -7,7 +7,7 @@ Work with any client with rpc commands based on bitcoin
 Commands:
 
  - /help: get info about commands
- - /newaddress: generate new public address
+ - /newaddress [type (legacy,segwit,bech32)]: generate new public address
  - /sendto [address] [amount] [(optional) confirmations] [(optional) comment]: send n units to x address and return txid
  - /alladdress: return all generated address
  - /balance: return confirmed balance
