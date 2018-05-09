@@ -135,7 +135,7 @@ try{
     break;
 
     case "/help":
-    bot.sendMessage(chatId, '/newaddress : Get a new address \n/sendto [address] [amount] [(optional)confirmations] [(optional)comment] : send X units to X address and return txid \n/alladdress : return all of you registred address\n/balance : return confirmed balance\n/history : return all transactions\n/reqpay [amount] [comment(optional)] request payment\n/qr [text] : convert any text to a qr image');
+    bot.sendMessage(chatId, '/newaddress [type (legacy,segwit,bech32)] : Get a new address \n/sendto [address] [amount] [(optional)confirmations] [(optional)comment] : send X units to X address and return txid \n/alladdress : return all of you generated address\n/balance : return confirmed balance\n/history : return all transaction history\n/reqpay [amount] [comment(optional)] request payment\n/qr [text] : convert any text to a qr image');
     break;
     case "/history":
     
@@ -196,7 +196,7 @@ try{
             debugL(errMsg);
             throw new Error(errMsg);
           } else {
-            bot.sendMessage(chatId,'This is you new address: ' + address);
+            bot.sendMessage(chatId,address);
             var qr = require('qr-image');  
             var code = qr.imageSync(address, { type: 'png', ec_level:'Q' });  
             bot.sendPhoto(chatId,code);
@@ -268,8 +268,11 @@ try{
         debugL(errMsg);
         throw new Error(errMsg);
       } else {
+        var addrs=String(res.result).split(",");
+        for (var ad=0;ad<addrs.length;ad++){
+          bot.sendMessage(addrs[ad]);
+        }
         
-        bot.sendMessage(chatId,String(res.result).split(",").join("\n\n"));
       }
     }); 
     

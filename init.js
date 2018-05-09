@@ -9,8 +9,6 @@ if(!fs.existsSync("settings.json")){
     process.exit();
 }
 
-
-
 if(!fs.existsSync(require("./settings.json").DIR+"/ca.pem") || !fs.existsSync(require("./settings.json").DIR+"/key.pem") || !fs.existsSync(require("./settings.json").DIR+"/cert.pem")){
     if(!require("./settings.json").CA){
     if(require("./settings.json").PRODUCTION===true){
