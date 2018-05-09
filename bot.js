@@ -269,8 +269,9 @@ try{
         throw new Error(errMsg);
       } else {
         var addrs=String(res.result).split(",");
+        console.log(addrs);
         for (var ad=0;ad<addrs.length;ad++){
-          bot.sendMessage(addrs[ad]);
+          bot.sendMessage(chatId,addrs[ad]);
         }
         
       }
