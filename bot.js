@@ -30,7 +30,8 @@ try{
 const TelegramBot = require('node-telegram-bot-api');
 var request = require('request');
 const token = require("./settings.json").TOKEN;
-var QrCode = require('qrcode-reader');
+var QrCode = require('jsqr');
+
 const UnitName=require("./settings.json").UnitName;
 const FullName=require("./settings.json").FullName;
 var bot;
@@ -38,7 +39,8 @@ var Jimp = require("jimp");
 const production=require("./settings.json").PRODUCTION;
 var debugb=false;
 var rpcCoin = require('node-bitcoin-rpc');
-var url=require("./settings.json").URL
+var url=require("./settings.json").URL;
+
 rpcCoin.init(require("./settings.json").RPCH, require("./settings.json").RPCP, require("./settings.json").RPCUS, require("./settings.json").RPCPW);
 
 if(production === true) {
@@ -402,30 +404,20 @@ try{
 				debugL('path: ' + p);
 				var uri = "https:\/\/api.telegram.org\/file\/bot" + token + "\/" + p;
         debugL('uri: ' + uri);
-        var qrr = new QrCode();
+        //var qrr = new QrCode();
         
         Jimp.read(uri, function(err, image) {
           if (err) {
-            bot.sendMessage(msg.chat.id, 'Error');              
+            bot.sendMessage(msg.chat.id, 'Error');
+            return;              
           }
-          var qrr = new QrCode();
-          qrr.callback = function(err, value) {
-              if (err) {
-                bot.sendMessage(msg.chat.id, 'Error');                  
-              }
-              var decoded=decodeURI(value.result);
-              if(decoded.includes(FullName+":")){
-                dcq=UrlParams(decoded);
-                debugL(dcq);
-                bot.sendMessage(msg.chat.id,`/sendto ${dcq[FullName]} ${dcq.amount} 2 ${dcq.message}`);
-              }else{
-                  bot.sendMessage(msg.chat.id,decoded);
-                  return;
-              } 
-              console.log(value.result);
-              console.log(value);
-          };
-          qrr.decode(image.bitmap);                 
+          var code = QrCode(image.bitmap.data,image.bitmap.width,image.bitmap.height);
+          if(code){
+            debugL("qr code:"+code.data);
+            bot.sendMessage(msg.chat.id, code.data);   
+          }else{
+            bot.sendMessage(msg.chat.id, 'Error');   
+          }             
           
       });
       });      

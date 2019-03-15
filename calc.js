@@ -43,6 +43,6 @@ while(rew>0){
 }
 console.log("\x1b[36m","Aprox halv: "+secondsToString(blockhalv*blocktime));
 console.log("Aprox max coins: "+res);
-console.log("Aprox subsidy end (ignored difficulty changes): "+secondsToString(rounds*(blockhalv*blocktime)));
+console.log("Aprox subsidy end (ignored difficult changes): "+secondsToString(rounds*(blockhalv*blocktime)));
 console.log("rounds: "+rounds);
 console.log("\x1b[0m");
