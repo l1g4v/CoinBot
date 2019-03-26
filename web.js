@@ -1,3 +1,5 @@
+/* A small webhook server :) */
+
 var fs = require('fs');
 var https = require('https');
 var express = require('express');
@@ -9,7 +11,6 @@ var app = express();
 var options = {
   key: fs.readFileSync('key.pem'),
   cert: fs.readFileSync('cert.pem')
-  //ca: fs.readFileSync('ca.pem')
 };
 if(require("./settings.json").CA===true){
   options = {

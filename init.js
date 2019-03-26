@@ -9,13 +9,14 @@ if(!fs.existsSync("settings.json")){
     process.exit();
 }
 
+//TODO: generate certs on windows
 if(!fs.existsSync(require("./settings.json").DIR+"/ca.pem") || !fs.existsSync(require("./settings.json").DIR+"/key.pem") || !fs.existsSync(require("./settings.json").DIR+"/cert.pem")){
     if(!require("./settings.json").CA){
     if(require("./settings.json").PRODUCTION===true){
-        if(isWin){
+        if(isWin){            
             console.log("\x1b[33m","auto generate ca.pem key.pem cert.pem only avaliable on linux based systems");
             console.log("\x1b[0m");
-            process.exit();
+            process.exit(2);
         }
         
         var exec = require('child_process').exec;
@@ -25,7 +26,7 @@ if(!fs.existsSync(require("./settings.json").DIR+"/ca.pem") || !fs.existsSync(re
         var dir = exec(cmd, function(err, stdout, stderr) {
             if (err) {
               console.error(err);
-              process.exit();
+              process.exit(1);
             }
             console.log("\x1b[32m",stdout);
             console.log("\x1b[0m");

@@ -1,0 +1,57 @@
+{
+    "TODO": "Add more languages",
+    "langs":[
+        "en","es"
+    ],
+    "en":{
+        "error_msg":"Error when calling: ",
+        "error2_msg":"Error",
+        "start_msg":"Welcome ${user} this is your new address: ",
+        "help_msg": [
+            "/newaddress [type (legacy,segwit,bech32)] : Get a new address",
+            "/sendto [address] [amount] [(optional)confirmations] [(optional)comment] : send X units to X address and return txid",
+            "/alladdress : return all of you generated address",
+            "/balance : return confirmed balance",
+            "/history : return all transaction history",
+            "/reqpay [amount] [comment(optional)] request payment",
+            "/qr [text] : convert any text to a qr image"
+        ],
+        "history_msg": [
+            "Category: ${category}",
+            "Amount: ${amount}",
+            "Comment: ${comment}",
+            "Transaccion ID: ${txid}"
+        ],
+        "sento_error":"require address and amount arguments",
+        "reqpay_error":"require amount argument",
+        "qr_error": "require text argument",
+        "cmd_error": "Unknow command, write /help for more info",
+        "local_transfer": "Done, txid doesnt generate between bot account transfers"
+    },
+
+    "es":{
+        "error_msg":"Error al llamar: ",
+        "error2_msg":"Error",
+        "start_msg":"Bienvenido ${user} esta es tu nueva dirección :",
+        "help_msg": [
+            "/newaddress [type (legacy,segwit,bech32)] : Generar una nueva dirección",
+            "/sendto [address] [amount] [(optional)confirmations] [(optional)comment] : envia N unidades a X dirección y retorna el txid",
+            "/alladdress : muestra todas tus direcciones generadas",
+            "/balance : muestra tus fondos confirmados",
+            "/history : muestra todo tu historial de transacciones",
+            "/reqpay [amount] [comment(optional)] genera la peticion de un pago",
+            "/qr [text] : convierte cualquier texto en un codigo qr"
+        ],
+        "history_msg": [
+            "Categoria: ${category}",
+            "Candidad: ${amount}",
+            "Comentario: ${comment}",
+            "ID de transaccion: ${txid}"
+        ],
+        "sento_error":"recuerda ingresar los parametros 'address' y 'amount'",
+        "reqpay_error":"falta el parametro 'amount'",
+        "qr_error": "falta el parametro 'text'",
+        "cmd_error": "Comando desconocido, escribe /help para más información",
+        "local_transfer": "Listo, un txid no se genera en transferencias de cuentas existentes en el bot"
+    }
+}
